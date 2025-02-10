@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import authRoutes from '../src/auth/auth.routes.js';
 import coursRoutes from "../src/cours/cours.router.js";
 import studentRouter from "../src/student/student.router.js";
+import teacherRouter from "../src/teacher/teacher.router.js";
 import { limiter } from '../middlewares/rate.limit.js';
 
 
@@ -23,7 +24,7 @@ const routes = (app) => {
     app.use(authRoutes)
     app.use(coursRoutes)
     app.use(studentRouter)
-    //app.use('/v1/teacher', )
+    app.use(teacherRouter)
 }
 
 export const initServer = ()=>{

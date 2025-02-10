@@ -1,5 +1,6 @@
 import Student from '../student/student.model.js';
 import Teacher from '../teacher/teacher.model.js';
+import Person from '../person/person.model.js'
 import { checkPassword, encrypt } from '../../utils/crypto.js';
 import { generateJwt } from '../../utils/jwt.js';
 
@@ -23,6 +24,11 @@ export const register = async (req, res) => {
             let teacher = new Teacher(data);
             teacher.password = await encrypt(data.password);
             await teacher.save();
+            res.send({ message: 'Teacher registered successfully' });
+        }else if(data.role === 'ADMIN_ROLE'){
+            let admin = new Person(data);
+            admin.password = await encrypt(data.password);
+            await admin.save();
             res.send({ message: 'Teacher registered successfully' });
         }
     } catch (error) {

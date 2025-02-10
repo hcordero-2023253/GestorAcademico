@@ -32,6 +32,10 @@ const studentSchema = new Schema({
         minLength: [8, 'Password must be at least 8 characters long'],
         maxLength: [100, 'Password can not be longer than 100 characters'],
     },
+    cours:[{
+        type:Schema.Types.ObjectId,
+        ref:'Cours',
+    }],
     role:{
         type: String,
         required: [true,'Role is required'],
